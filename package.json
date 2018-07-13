@@ -1,9 +1,11 @@
 {
   "name": "tweet-web-component-angular6-test",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Julian Mosquera",
   "description": "Prueba de web-component construido en angular 6",
-  "files": ["build/"],
+  "files": [
+    "build/"
+  ],
   "main": "build/tweet.js",
   "scripts": {
     "ng": "ng",

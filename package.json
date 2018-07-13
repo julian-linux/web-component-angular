@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "author": "Julian Mosquera",
   "description": "Prueba de web-component construido en angular 6",
+  "files": ["build/"],
+  "main": "build/tweet.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

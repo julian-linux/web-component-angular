@@ -1,20 +1,49 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="text-center">Buscar Tweets</h2>
 
+      <!-- <form (ngSubmit)="onSubmit($event);"> -->
+        <div class="input-group">
+          <input type="text" #box (keyup)="onKey($event, box.value)" class="form-control" />
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" (click)="getTweets();">Buscar</button>
+          </div>
+        </div>
+        <div class="btn-group btn-group-toggle mt-1" data-toggle="buttons">
+            <label class="btn btn-secondary" [class.active]="order=='asc'">
+              <input type="radio" name="options" id="option1" autocomplete="off" (click)="changeOrder('asc');"> Menos reciente
+            </label>
+            <label class="btn btn-secondary" [class.active]="order=='desc'">
+              <input type="radio" name="options" id="option2" autocomplete="off" (click)="changeOrder('desc');"> Más reciente
+            </label>
+          </div>
+      <!-- </form> -->
+    </div>
+  </div>
+  <div class="row mt-5">
+      <div class="col-12">
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let tweet of list">
+            <div class="media">
+              <img class="mr-3 rounded" [src]="tweet.img" alt="Img">
+              <div class="media-body">
+                <h5 class="mt-0">
+                  <strong>{{tweet.name}}</strong>
+                  &nbsp;&nbsp;
+                  <span>@{{tweet.screen_name}}</span>
+                  &nbsp;&nbsp;
+                  <span>{{tweet.created[2]}} {{tweet.created[1]}} {{tweet.created[5]}}</span>
+                </h5>
+                <hr>
+                <p class="text-justify">
+                  {{tweet.text[0]}} ...
+                  <a [href]="tweet.text[1]" target="_blank">{{tweet.text[1]}}</a>
+                </p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+</div>
